@@ -21,8 +21,8 @@ $class = bavotasan_article_class();
 		<div class="document-content"><?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 	    	<div class="entry-content">
 		  	  <?php the_content(); ?>
-			</div><!-- .entry-content -->
-		</div>
+			
+		
 <?php
 		$args = array( 'post_type' => 'attachment', 'numberposts' => -1, 'post_status' => null, 'post_parent' => get_the_ID()
 			, 'post_mime_type'=>array('application/pdf', 'application/msword', 'image/jpeg'), 'order'=>'ASC', 'orderby'=>'ID' ); 
@@ -44,4 +44,6 @@ $class = bavotasan_article_class();
 		}
 
 ?>
+			</div><!-- .entry-content -->
+		</div>
 	</article><!-- #post-<?php the_ID(); ?> -->

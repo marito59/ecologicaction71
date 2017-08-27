@@ -39,3 +39,7 @@ div.document-content {
     font-size: 14px;
     font-weight: bold;
 }
+
+.widget-newsletter {
+    padding: 10px;
+}

@@ -22,14 +22,15 @@ get_header(); ?>
 			// select documents category as root
 			$args = array('child_of' => 9, 'order_by' => 'name', 'order' => 'DESC');
 			$categories = get_categories( $args );
-			$prev_cat = '';
-			$cat_level = 0;
 
 			// pour chaque catégorie, affiche le nom puis les articles correspondants avec leurs attachements
 			foreach($categories as $category) { 
-				if ($prev_cat != $category) {
-					$cat_level++;
-					$prev_cat = $category;
+				$pos = strpos($category->slug, '-');
+				if($pos === false) {
+					$cat_level = '1';
+				} else {
+					//$str = substr($category->slug, 0, $pos-1) ;
+					$cat_level = $pos;
 				}
 				?>
 				<div class="category_name cat_level_<?php echo $cat_level;?>"><?php echo $category->name; ?></div>
