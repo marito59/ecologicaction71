@@ -8,3 +8,34 @@ Template: magazine-basic
 Version: 1.0
 Text Domain: magazine-basic
 */
+
+div.document-thumb {
+    display: inline-block;
+    width: 140px;
+    vertical-align: top;
+}
+
+div.document-content {
+    display: inline-block;
+    width: 80%;
+}
+
+.category_name.cat_level_1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.category_name.cat_level_2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.category_name.cat_level_3 {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.document-content h2.entry-title {
+    font-size: 14px;
+    font-weight: bold;
+}
