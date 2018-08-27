@@ -28,4 +28,21 @@
 	  	) );
 	}	
 
+	// utilisation d'une template part dans Display Post Shortcode pour afficher les évènements
+	function cma_ecolo_dps_template_part( $output, $original_atts ) {
+
+		// Return early if our "layout" attribute is not specified
+		if( empty( $original_atts['layout'] ) )
+			return $output;
+		ob_start();
+		get_template_part( 'template-parts/event', $original_atts['layout'] );
+		$new_output = ob_get_clean();
+		if( !empty( $new_output ) )
+			$output = $new_output;
+		return $output;
+	}
+
+	add_action( 'display_posts_shortcode_output', 'cma_ecolo_dps_template_part', 10, 2 );
+	
+
 ?>
