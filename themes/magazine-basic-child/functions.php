@@ -35,7 +35,7 @@
 		if( empty( $original_atts['layout'] ) )
 			return $output;
 		ob_start();
-		get_template_part( 'template-parts/event', $original_atts['layout'] );
+		get_template_part( 'template-parts/dps', $original_atts['layout'] );
 		$new_output = ob_get_clean();
 		if( !empty( $new_output ) )
 			$output = $new_output;
