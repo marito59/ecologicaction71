@@ -44,5 +44,13 @@
 
 	add_action( 'display_posts_shortcode_output', 'cma_ecolo_dps_template_part', 10, 2 );
 	
-
+	// redirige les pages documents (qui ont un document attaché) vers le document attaché
+	function cma_ecolo_attachment_redirect() {
+		$document_attache = get_field('media_attache');
+		if( $document_attache ){
+			wp_safe_redirect($document_attache['url'], 301);
+			exit;
+		}
+	}
+	add_action( 'template_redirect', 'cma_ecolo_attachment_redirect' );
 ?>
