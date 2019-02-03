@@ -43,12 +43,27 @@
 	}
 
 	add_action( 'display_posts_shortcode_output', 'cma_ecolo_dps_template_part', 10, 2 );
+
+	// retourne le document attaché à un article qui peut être soit attaché (dans la base media) soit externe via un URL
+	function cma_ecolo_get_document_attachment() {
+		$document_redirect = [];
+		$document_attache = get_field('media_attache');
+		$document_externe = get_field('document_externe');
+		$titre_document_externe = get_field('titre_document_externe');
+		
+		if( $document_attache || $document_externe ){
+			$document_redirect["url"] = ($document_attache) ? $document_attache['url'] : $document_externe;
+			$document_redirect["title"] = ($document_attache) ? $document_attache['title'] : $titre_document_externe;
+		}
+		return $document_redirect;
+	}
 	
 	// redirige les pages documents (qui ont un document attaché) vers le document attaché
 	function cma_ecolo_attachment_redirect() {
-		$document_attache = get_field('media_attache');
-		if( $document_attache ){
-			wp_safe_redirect($document_attache['url'], 301);
+		$document_redirect = cma_ecolo_get_document_attachment();
+
+		if( $url_redirect ){
+			wp_safe_redirect($document_redirect["url"], 301);
 			exit;
 		}
 	}

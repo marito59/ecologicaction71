@@ -23,15 +23,15 @@ $class = bavotasan_article_class();
 		  	  <?php the_content(); ?>
 			
 	<?php
-		$file = get_field('media_attache');
-		if( $file ) {
+		$document_redirect = cma_ecolo_get_document_attachment();
+		if( $document_redirect ) {
 			// vars
-			$url = $file['url'];
-			$title = $file['title'];
-			$caption = $file['caption'];
+			$url = $document_redirect['url'];
+			$title = $document_redirect['title'];
+			$caption = $document_redirect['caption'];
 			?>
 			<ul><li>
-			<a href="<?php echo $url; ?>" title="<?php echo $title; ?>">
+			<a href="<?php echo $url; ?>" title="<?php echo $title; ?>" target="_blank">
 				<span><?php echo $title; ?></span>
 			</a>
 			</li></ul>
